@@ -1,0 +1,16 @@
+# Compilados de PlatformIO (se regeneran solos)
+.pio/
+
+# Configuracion local de VS Code (cada uno tiene la suya)
+.vscode/*
+!.vscode/extensions.json
+
+# SECRETOS: tokens y claves. NUNCA subir al repo.
+include/secrets.h
+
+# Carpeta que genera el script de entrega
+entrega/
+
+# Basura del sistema
+.DS_Store
+Thumbs.db

@@ -1,0 +1,5 @@
+[wokwi]
+version = 1
+# Wokwi simula el firmware que compila el entorno "wokwi" de platformio.ini
+firmware = '.pio/build/wokwi/firmware.bin'
+elf = '.pio/build/wokwi/firmware.elf'
