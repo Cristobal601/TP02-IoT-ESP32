@@ -39,6 +39,14 @@ BotTelegram::BotTelegram(const char *token, Dispositivos dispositivos, ConfigBot
 void BotTelegram::iniciar() {
     // Certificado raiz de api.telegram.org (viene en la libreria).
     clienteSeguro.setCACert(TELEGRAM_CERTIFICATE_ROOT);
+
+    // La libreria acepta respuestas de hasta 1500 bytes por defecto. Cuando se
+    // toca un boton inline, Telegram reenvia el mensaje ENTERO que tenia el
+    // teclado (el de /start pesa ~1700 bytes): no entra, falla el parseo, el
+    // mensaje nunca se marca como leido y el bot queda trabado para siempre.
+    // El ESP32 tiene RAM de sobra, asi que agrandamos el limite.
+    bot.maxMessageLength = 6000;
+
     if (!bot.setMyCommands(LISTA_COMANDOS)) {
         Serial.println("[Telegram] No se pudo registrar el menu de comandos (token o red?)");
     }
